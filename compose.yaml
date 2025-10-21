@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17.6-alpine
+    container_name: brewly_postgres
+    environment:
+      POSTGRES_USER: brewly_sys
+      POSTGRES_PASSWORD: brewly_sys
+      POSTGRES_DB: brewly_sys_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+volumes:
+  db-data:
+  pgadmin-data:
+
+networks:
+  app-network:
+    driver: bridge
